@@ -13,12 +13,11 @@ module.exports = {
                 throw new ErrorHandler(errors_massage.NOT_VALID_BODY, errors_code.NOT_VALID);
             }
 
-            const user = await User.findByIdAndUpdate(user_id, req.body);
+            await User.findByIdAndUpdate(user_id, req.body);
 
-            req.user = user;
             next();
         } catch (e) {
             next(e);
         }
     },
-}
+};

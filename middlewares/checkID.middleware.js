@@ -7,6 +7,7 @@ module.exports = {
     checkIDMiddleware: async (req, res, next) => {
         try {
             const {user_id} = req.params;
+
             const oneUser = await User.findById(user_id).select('-password');
 
             if (!oneUser) {

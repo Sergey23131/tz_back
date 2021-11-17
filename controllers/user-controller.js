@@ -1,6 +1,6 @@
 const User = require('../database/Users');
 
-const {errors_massage, errors_code} = require('../errors');
+const {errors_code} = require('../errors');
 
 module.exports = {
     getUsers: async (req, res, next) => {
@@ -23,10 +23,13 @@ module.exports = {
         }
     },
 
-    updateUser: (req, res, next) => {
+    updateUser: async (req, res, next) => {
         try {
+            const {user_id} = req.params;
 
-            res.status(errors_code.UPDATE_DATA).json(req.user);
+            const user = await User.findById(user_id).select('-password');
+
+            res.status(errors_code.UPDATE_DATA).json(user);
         } catch (e) {
             next(e);
         }
@@ -46,7 +49,7 @@ module.exports = {
         try {
             await User.findOneAndDelete(req.user);
 
-            res.status(errors_code.UPDATE_DATA).json();
+            res.status(errors_code.UPDATE_DATA).json('account was removed');
         } catch (e) {
             next(e);
         }
