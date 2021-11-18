@@ -37,9 +37,9 @@ module.exports = {
 
     createUser: async (req, res, next) => {
         try {
-            const newUser = await User.createHashPassword(req.body);
+            await User.createHashPassword(req.body);
 
-            res.status(errors_code.UPDATE_DATA).json(newUser);
+            res.status(errors_code.UPDATE_DATA).json('You create new user!');
         } catch (e) {
             next(e);
         }
@@ -47,9 +47,11 @@ module.exports = {
 
     deleteUser: async (req, res, next) => {
         try {
-            await User.findOneAndDelete(req.user);
+            const {user_id} = req.params;
 
-            res.status(errors_code.UPDATE_DATA).json('account was removed');
+            await User.findByIdAndRemove(user_id);
+
+            res.status(errors_code.UPDATE_DATA).json('User is removed!');
         } catch (e) {
             next(e);
         }

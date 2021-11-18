@@ -4,4 +4,5 @@ module.exports = {
     NOT_VALID_BODY: 'Body is not valid',
     NOT_FOUND_BY_ID: 'User dosent exist',
     REMOVE_USER: 'User was removed',
+    CORS_ALLOW:'Cors is not allowed'
 };
