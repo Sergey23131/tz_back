@@ -5,6 +5,9 @@ const cors = require('cors');
 const userRouter = require('./routers/user-router');
 const {ErrorHandler, errors_massage} = require('./errors');
 const {PORT, MONGO_CONNECT_URL, ALLOWED_ORIGIN, NODE_ENV} = require('./configs/config');
+const swaggerUI = require('swagger-ui-express');
+const swaggerJson = require('./docs/swagger.json');
+
 
 const app = express();
 
@@ -14,6 +17,7 @@ app.use(express.urlencoded({extended: true}));
 
 mongoose.connect(MONGO_CONNECT_URL);
 
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerJson));
 app.use('/users', userRouter);
 
 app.use('*', (err, req, res, next) => {

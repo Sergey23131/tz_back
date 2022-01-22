@@ -1,0 +1,326 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Web",
+    "description": "Swagger_documentation",
+    "contact": {
+      "name": "Serhii Stetsenko",
+      "email": "semno321@gmail.com"
+    }
+  },
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "getAllUsers",
+        "description": "You will get all users",
+        "parameters": [
+          {
+            "name": "username",
+            "type": "string",
+            "in": "query",
+            "default": "Qwerty",
+            "required": false
+          },
+          {
+            "name": "first_name",
+            "type": "string",
+            "in": "query",
+            "default": "Serhii",
+            "required": false
+          },
+          {
+            "name": "last_name",
+            "type": "string",
+            "in": "query",
+            "default": "Stetsenko",
+            "required": false
+          },
+          {
+            "name": "role",
+            "type": "string",
+            "in": "query",
+            "enum": [
+              "admin",
+              "driver"
+            ],
+            "default": "driver",
+            "required": false
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "in": "query",
+            "default": "qwerty@gmail.com",
+            "required": false
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "createUser",
+        "description": "This is how to create user",
+        "parameters": [
+          {
+            "name": "username",
+            "type": "string",
+            "in": "formData",
+            "default": "Username",
+            "required": true,
+            "minimum": 2,
+            "maximum": 30
+          },
+          {
+            "name": "first_name",
+            "type": "string",
+            "in": "formData",
+            "default": "Serhii",
+            "required": true
+          },
+          {
+            "name": "last_name",
+            "type": "string",
+            "in": "formData",
+            "default": "Stetsenko",
+            "required": true
+          },
+          {
+            "name": "role",
+            "type": "string",
+            "in": "formData",
+            "enum": [
+              "admin",
+              "driver"
+            ],
+            "default": "driver",
+            "required": false
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "in": "formData",
+            "default": "example1@gmail.com",
+            "required": true
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "in": "formData",
+            "default": "Password!1",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/:user_id": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "getUserByID",
+        "description": "It gets user by ID",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "default": "6177afbf0d4ab56064382dbe"
+          },
+          {
+            "name": "username",
+            "type": "string",
+            "in": "query",
+            "default": "Qwerty",
+            "required": false
+          },
+          {
+            "name": "first_name",
+            "type": "string",
+            "in": "query",
+            "default": "Serhii",
+            "required": false
+          },
+          {
+            "name": "last_name",
+            "type": "string",
+            "in": "query",
+            "default": "Stetsenko",
+            "required": false
+          },
+          {
+            "name": "role",
+            "type": "string",
+            "in": "query",
+            "enum": [
+              "admin",
+              "driver"
+            ],
+            "default": "driver",
+            "required": false
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "in": "query",
+            "default": "qwerty@gmail.com",
+            "required": false
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "UserUpdate",
+        "description": "When you set new info to user",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "default": "6177afbf0d4ab56064382dbe"
+          },
+          {
+            "name": "first_name",
+            "type": "string",
+            "in": "formData",
+            "default": "Serhii",
+            "required": true
+          },
+          {
+            "name": "last_name",
+            "type": "string",
+            "in": "formData",
+            "default": "Stetsenko",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "UserDelete",
+        "description": "When you delete account of user",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "default": "6177afbf0d4ab56064382dbe"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "201": {
+      "description": "Update Database",
+      "schema": {
+        "properties": {
+          "msg": {
+            "type": "string",
+            "example": "You made update of database"
+          },
+          "code": {
+            "type": "number",
+            "example": 201
+          }
+        }
+      }
+    },
+    "204": {
+      "description": "Removing of user",
+      "schema": {
+        "properties": {
+          "msg": {
+            "type": "string",
+            "example": "User was removed"
+          },
+          "code": {
+            "type": "number",
+            "example": 204
+          }
+        }
+      }
+    },
+    "400": {
+      "description": "Not valid info",
+      "schema": {
+        "properties": {
+          "msg": {
+            "type": "string",
+            "example": "Body is not valid"
+          },
+          "code": {
+            "type": "number",
+            "example": 400
+          }
+        }
+      }
+    },
+    "404": {
+      "description": "Mishandling",
+      "schema": {
+        "properties": {
+          "msg": {
+            "type": "string",
+            "example": "User dosent exist"
+          },
+          "code": {
+            "type": "number",
+            "example": 404
+          }
+        }
+      }
+    },
+    "409": {
+      "description": "User with this email exists",
+      "schema": {
+        "properties": {
+          "msg": {
+            "type": "string",
+            "example": "Email already exists"
+          },
+          "code": {
+            "type": "number",
+            "example": 409
+          }
+        }
+      }
+    }
+  }
+}
