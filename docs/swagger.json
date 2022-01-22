@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0",
-    "title": "Web",
+    "title": "Documentation",
     "description": "Swagger_documentation",
     "contact": {
       "name": "Serhii Stetsenko",
@@ -60,7 +60,10 @@
         ],
         "responses": {
           "201": {
-            "description": ""
+            "$ref": "#/responses/201"
+          },
+          "404": {
+            "$ref": "#/responses/404"
           }
         }
       },
@@ -122,7 +125,13 @@
         ],
         "responses": {
           "201": {
-            "description": ""
+            "$ref": "#/responses/201"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "409": {
+            "$ref": "#/responses/409"
           }
         }
       }
@@ -184,7 +193,13 @@
         ],
         "responses": {
           "201": {
-            "description": ""
+            "$ref": "#/responses/201"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "404": {
+            "$ref": "#/responses/404"
           }
         }
       },
@@ -219,7 +234,10 @@
         ],
         "responses": {
           "201": {
-            "description": ""
+            "$ref": "#/responses/201"
+          },
+          "400": {
+            "$ref": "#/responses/400"
           }
         }
       },
@@ -240,7 +258,10 @@
         ],
         "responses": {
           "201": {
-            "description": ""
+            "$ref": "#/responses/201"
+          },
+          "204": {
+            "$ref": "#/responses/204"
           }
         }
       }
@@ -253,7 +274,7 @@
         "properties": {
           "msg": {
             "type": "string",
-            "example": "You made update of database"
+            "example": "You made update of database or success request"
           },
           "code": {
             "type": "number",
@@ -283,7 +304,7 @@
         "properties": {
           "msg": {
             "type": "string",
-            "example": "Body is not valid"
+            "example": "Not valid"
           },
           "code": {
             "type": "number",
