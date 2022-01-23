@@ -3,10 +3,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRouter = require('./routers/user-router');
-const {ErrorHandler, errors_massage} = require('./errors');
-const {PORT, MONGO_CONNECT_URL, ALLOWED_ORIGIN, NODE_ENV} = require('./configs/config');
 const swaggerUI = require('swagger-ui-express');
 const swaggerJson = require('./docs/swagger.json');
+
+const {ErrorHandler, errors_massage} = require('./errors');
+const {PORT, MONGO_CONNECT_URL, ALLOWED_ORIGIN, NODE_ENV} = require('./configs/config');
 
 
 const app = express();

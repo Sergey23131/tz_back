@@ -7,7 +7,7 @@ module.exports = {
         const isPasswordMatched = await bcrypt.compare(password, hashPassword);
 
         if (!isPasswordMatched) {
-           // throw new ErrorHandler(errors_massage.NOT_VALID_BODY, errors_code.NOT_VALID);
+            throw new ErrorHandler(errors_massage.NOT_VALID_BODY, errors_code.NOT_VALID);
         }
     }
 };

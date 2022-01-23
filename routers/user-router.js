@@ -8,11 +8,11 @@ const userController = require('../controllers/user-controller');
 
 userRouter.get('/', userController.getUsers);
 
+userRouter.post('/', createUserMiddleware, userController.createUser);
+
 userRouter.get('/:user_id', checkIDMiddleware, userController.getUsersById);
 
 userRouter.put('/:user_id', checkIDMiddleware, updateUserMiddleware, userController.updateUser);
-
-userRouter.post('/', createUserMiddleware, userController.createUser);
 
 userRouter.delete('/:user_id', checkIDMiddleware, userController.deleteUser);
 
